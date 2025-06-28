@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Image Gallery - CodeAlpha Task 3</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="bg-gray-900 text-white">
+  <header class="p-4 flex items-center gap-3">
+    <div class="relative w-full max-w-md">
+      <input type="text" placeholder="Search images..." class="pl-10 pr-4 py-2 rounded-full bg-gray-800 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500 text-sm w-full">
+      <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500"></i>
+    </div>
+    <button class="primary-btn p-2 rounded-full bg-indigo-600 hover:bg-indigo-700">
+      <i class="fas fa-cog"></i>
+    </button>
+    <div class="flex items-center gap-3">
+      <div class="relative">
+        <input type="text" placeholder="Search images..." class="pl-10 pr-4 py-2 rounded-full bg-gray-800 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent text-sm">
+        <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500"></i>
+      </div>
+      <button class="primary-btn p-2 rounded-full">
+        <i class="fas fa-cog"></i>
+      </button>
+    </div>
+  </header>
+  <div class="flex flex-col lg:flex-row gap-6">
+    <div class="lg:w-64 glass-panel p-4">
+      <h2 class="font-semibold mb-4">Collections</h2>
+      <ul class="space-y-2 mb-6">
+        <li>
+          <a href="#" class="flex items-center gap-3 p-2 rounded-lg bg-indigo-500 bg-opacity-20 border border-indigo-500 border-opacity-30">
+            <i class="fas fa-images text-indigo-400"></i>
+            <span>All Photos</span>
+            <span class="ml-auto bg-indigo-500 text-xs py-1 px-2 rounded-full">124</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="flex items-center gap-3 p-2 rounded-lg hover:bg-white hover:bg-opacity-5">
+            <i class="fas fa-heart text-pink-400"></i>
+            <span>Favorites</span>
+            <span class="ml-auto bg-gray-700 text-xs py-1 px-2 rounded-full">18</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="flex items-center gap-3 p-2 rounded-lg hover:bg-white hover:bg-opacity-5">
+            <i class="fas fa-share-alt text-blue-400"></i>
+            <span>Shared</span>
+            <span class="ml-auto bg-gray-700 text-xs py-1 px-2 rounded-full">7</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="flex items-center gap-3 p-2 rounded-lg hover:bg-white hover:bg-opacity-5">
+            <i class="fas fa-trash text-red-400"></i>
+            <span>Deleted</span>
+            <span class="ml-auto bg-gray-700 text-xs py-1 px-2 rounded-full">3</span>
+          </a>
+        </li>
+      </ul>
+      <h2 class="font-semibold mb-4">Smart Categories</h2>
+      <ul class="space-y-2">
+        <li>
+          <a href="#" class="flex items-center gap-3 p-2 rounded-lg hover:bg-white hover:bg-opacity-5">
+            <i class="fas fa-mountain text-green-400"></i>
+            <span>Nature</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="flex items-center gap-3 p-2 rounded-lg hover:bg-white hover:bg-opacity-5">
+            <i class="fas fa-city text-blue-400"></i>
+            <span>Architecture</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="flex items-center gap-3 p-2 rounded-lg hover:bg-white hover:bg-opacity-5">
+            <i class="fas fa-palette text-purple-400"></i>
+            <span>Art</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="flex items-center gap-3 p-2 rounded-lg hover:bg-white hover:bg-opacity-5">
+            <i class="fas fa-plane-departure text-yellow-400"></i>
+            <span>Travel</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="flex items-center gap-3 p-2 rounded-lg hover:bg-white hover:bg-opacity-5">
+            <i class="fas fa-users text-red-400"></i>
+            <span>People</span>
+          </a>
+        </li>
+      </ul>
+      <div class="mt-6 pt-6 border-t border-gray-700">
+        <div class="text-sm text-gray-400 mb-2">Storage</div>
+        <div class="w-full bg-gray-700 rounded-full h-2.5">
+          <div class="bg-gradient-to-r from-indigo-500 to-purple-500 h-2.5 rounded-full" style="width: 45%"></div>
+        </div>
+        <div class="text-xs text-gray-400 mt-2">4.5 GB of 10 GB used</div>
+      </div>
+    </div>
+    <div class="flex-1">
+      <div id="upload-area" class="upload-area glass-panel p-6 mb-6 text-center">
+        <input type="file" id="file-input" class="hidden" multiple accept="image/*">
+        <div class="mb-4">
+          <div class="w-16 h-16 mx-auto rounded-full bg-indigo-500 bg-opacity-20 flex items-center justify-center">
+            <i class="fas fa-cloud-upload-alt text-2xl text-indigo-400"></i>
+          </div>
+        </div>
+        <h3 class="text-lg font-medium mb-2">Upload Your Photos</h3>
+        <p class="text-gray-400 mb-4">Drag & drop files here or click to browse</p>
+        <div class="flex flex-wrap justify-center gap-3">
+          <button id="browse-btn" class="primary-btn px-4 py-2 rounded-lg text-sm font-medium">
+            <i class="fas fa-folder-open mr-2"></i> Browse Files
+          </button>
+          <button id="camera-btn" class="secondary-btn px-4 py-2 rounded-lg text-sm font-medium">
+            <i class="fas fa-camera mr-2"></i> Use Camera
+          </button>
+        </div>
+      </div>
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
+        <div class="flex flex-wrap gap-2">
+          <button class="category-pill active px-3 py-1 rounded-full text-sm">All</button>
+          <button class="category-pill px-3 py-1 rounded-full bg-gray-800 text-sm">Nature</button>
+          <button class="category-pill px-3 py-1 rounded-full bg-gray-800 text-sm">Architecture</button>
+          <button class="category-pill px-3 py-1 rounded-full bg-gray-800 text-sm">Art</button>
+          <button class="category-pill px-3 py-1 rounded-full bg-gray-800 text-sm">Travel</button>
+          <button class="category-pill px-3 py-1 rounded-full bg-gray-800 text-sm">People</button>
+        </div>
+        <div class="flex gap-2">
+          <button id="grid-view-btn" class="view-mode-btn active p-2 rounded-lg" title="Grid View">
+            <i class="fas fa-th"></i>
+          </button>
+          <button id="masonry-view-btn" class="view-mode-btn p-2 rounded-lg bg-gray-800" title="Masonry View">
+            <i class="fas fa-columns"></i>
+          </button>
+          <button id="carousel-view-btn" class="view-mode-btn p-2 rounded-lg bg-gray-800" title="Carousel View">
+            <i class="fas fa-film"></i>
+          </button>
+        </div>
+      </div>
+      <div id="grid-view" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-4"></div>
+      <div id="masonry-view" class="masonry-grid hidden"></div>
+      <div id="carousel-view" class="hidden">
+        <div class="carousel flex overflow-x-auto gap-4 pb-4"></div>
+      </div>
+    </div>
+  </div>
+  <div class="fixed bottom-0 left-0 right-0 bg-gray-900 bg-opacity-95 backdrop-filter backdrop-blur-lg border-t border-gray-800 p-2 lg:hidden z-10">
+    <div class="flex justify-around">
+      <button class="flex flex-col items-center p-2 text-indigo-400">
+        <i class="fas fa-images"></i>
+        <span class="text-xs mt-1">Gallery</span>
+      </button>
+      <button class="flex flex-col items-center p-2 text-gray-400">
+        <i class="fas fa-heart"></i>
+        <span class="text-xs mt-1">Favorites</span>
+      </button>
+      <button class="flex flex-col items-center p-2 text-gray-400">
+        <i class="fas fa-plus-circle text-2xl"></i>
+      </button>
+      <button class="flex flex-col items-center p-2 text-gray-400">
+        <i class="fas fa-share-alt"></i>
+        <span class="text-xs mt-1">Shared</span>
+      </button>
+      <button class="flex flex-col items-center p-2 text-gray-400">
+        <i class="fas fa-cog"></i>
+        <span class="text-xs mt-1">Settings</span>
+      </button>
+    </div>
+  </div>
+  <div id="lightbox" class="fixed inset-0 bg-black bg-opacity-90 z-50 hidden flex items-center justify-center p-4 lightbox-animate">
+    <div class="relative max-w-5xl w-full lightbox-content-animate">
+      <button id="close-lightbox" class="absolute -top-12 right-0 text-white text-3xl hover:text-gray-300 transition">
+        <i class="fas fa-times"></i>
+      </button>
+      <div class="flex flex-col md:flex-row gap-4">
+        <div class="flex-1 glass-panel overflow-hidden rounded-xl">
+          <div id="lightbox-content" class="relative"></div>
+          <div class="p-4 flex justify-between items-center">
+            <div class="flex gap-2">
+              <button class="p-2 rounded-lg bg-gray-800 hover:bg-gray-700 transition tooltip">
+                <i class="fas fa-crop"></i>
+                <span class="tooltip-text">Crop</span>
+              </button>
+              <button class="p-2 rounded-lg bg-gray-800 hover:bg-gray-700 transition tooltip">
+                <i class="fas fa-adjust"></i>
+                <span class="tooltip-text">Adjust</span>
+              </button>
+              <button class="p-2 rounded-lg bg-gray-800 hover:bg-gray-700 transition tooltip">
+                <i class="fas fa-magic"></i>
+                <span class="tooltip-text">Filters</span>
+              </button>
+            </div>
+            <div class="flex gap-2">
+              <button id="lightbox-like-btn" class="like-btn p-2 rounded-lg bg-gray-800 hover:bg-gray-700 transition tooltip">
+                <i class="far fa-heart"></i>
+                <span class="tooltip-text">Add to favorites</span>
+              </button>
+              <button id="lightbox-share-btn" class="share-btn p-2 rounded-lg bg-gray-800 hover:bg-gray-700 transition tooltip">
+                <i class="fas fa-share-alt"></i>
+                <span class="tooltip-text">Share</span>
+              </button>
+              <button class="p-2 rounded-lg bg-gray-800 hover:bg-gray-700 transition tooltip">
+                <i class="fas fa-download"></i>
+                <span class="tooltip-text">Download</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="md:w-72 glass-panel p-4 rounded-xl hidden md:block">
+          <h3 id="lightbox-title" class="text-xl font-semibold mb-1">Image Title</h3>
+          <p id="lightbox-date" class="text-sm text-gray-400 mb-4">Added today</p>
+          <div class="mb-4">
+            <h4 class="text-sm font-medium text-gray-400 mb-2">Details</h4>
+            <div class="space-y-2 text-sm">
+              <div class="flex justify-between">
+                <span>Type</span>
+                <span class="text-gray-400">JPG</span>
+              </div>
+              <div class="flex justify-between">
+                <span>Size</span>
+                <span class="text-gray-400">2.4 MB</span>
+              </div>
+              <div class="flex justify-between">
+                <span>Dimensions</span>
+                <span class="text-gray-400">1920 × 1080</span>
+              </div>
+              <div class="flex justify-between">
+                <span>Created</span>
+                <span class="text-gray-400">May 26, 2023</span>
+              </div>
+            </div>
+          </div>
+          <div class="mb-4">
+            <h4 class="text-sm font-medium text-gray-400 mb-2">Tags</h4>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-2 py-1 bg-gray-800 rounded-full text-xs">Nature</span>
+              <span class="px-2 py-1 bg-gray-800 rounded-full text-xs">Landscape</span>
+              <span class="px-2 py-1 bg-gray-800 rounded-full text-xs">Mountain</span>
+              <span class="px-2 py-1 bg-gray-800 rounded-full text-xs">Sunset</span>
+            </div>
+          </div>
+          <div>
+            <h4 class="text-sm font-medium text-gray-400 mb-2">Description</h4>
+            <p class="text-sm text-gray-300">Beautiful mountain landscape captured during sunset with vibrant colors and stunning views.</p>
+          </div>
+        </div>
+      </div>
+      <div class="absolute top-1/2 left-4 transform -translate-y-1/2">
+        <button id="prev-image" class="p-3 rounded-full bg-gray-800 bg-opacity-70 hover:bg-opacity-100 transition text-white">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+      </div>
+      <div class="absolute top-1/2 right-4 transform -translate-y-1/2">
+        <button id="next-image" class="p-3 rounded-full bg-gray-800 bg-opacity-70 hover:bg-opacity-100 transition text-white">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div id="share-modal" class="fixed inset-0 bg-black bg-opacity-75 z-50 hidden flex items-center justify-center p-4">
+    <div class="glass-panel p-6 rounded-xl max-w-md w-full">
+      <div class="flex justify-between items-center mb-6">
+        <h3 class="text-xl font-semibold">Share Image</h3>
+        <button id="close-share" class="text-gray-400 hover:text-white">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="grid grid-cols-3 gap-4 mb-6">
+        <button class="social-btn facebook p-4 rounded-lg flex flex-col items-center">
+          <i class="fab fa-facebook-f text-xl"></i>
+          <span class="text-xs mt-2">Facebook</span>
+        </button>
+        <button class="social-btn twitter p-4 rounded-lg flex flex-col items-center">
+          <i class="fab fa-twitter text-xl"></i>
+          <span class="text-xs mt-2">Twitter</span>
+        </button>
+        <button class="social-btn instagram p-4 rounded-lg flex flex-col items-center">
+          <i class="fab fa-instagram text-xl"></i>
+          <span class="text-xs mt-2">Instagram</span>
+        </button>
+        <button class="social-btn pinterest p-4 rounded-lg flex flex-col items-center">
+          <i class="fab fa-pinterest-p text-xl"></i>
+          <span class="text-xs mt-2">Pinterest</span>
+        </button>
+        <button class="social-btn whatsapp p-4 rounded-lg flex flex-col items-center">
+          <i class="fab fa-whatsapp text-xl"></i>
+          <span class="text-xs mt-2">WhatsApp</span>
+        </button>
+        <button class="social-btn bg-gray-700 p-4 rounded-lg flex flex-col items-center">
+          <i class="fas fa-envelope text-xl"></i>
+          <span class="text-xs mt-2">Email</span>
+        </button>
+      </div>
+      <div class="mb-6">
+        <label class="text-sm text-gray-400 mb-2 block">Image Link</label>
+        <div class="flex">
+          <input type="text" value="https://gallery.example.com/img/abc123" class="flex-1 bg-gray-800 border border-gray-700 rounded-l-lg px-3 py-2 text-sm" readonly>
+          <button class="bg-gray-700 hover:bg-gray-600 px-3 rounded-r-lg">
+            <i class="fas fa-copy"></i>
+          </button>
+        </div>
+      </div>
+      <button class="primary-btn w-full py-2 rounded-lg">
+        Generate QR Code
+      </button>
+    </div>
+  </div>
+  <div id="camera-modal" class="fixed inset-0 bg-black bg-opacity-90 z-50 hidden flex items-center justify-center p-4">
+    <div class="glass-panel p-4 rounded-xl max-w-lg w-full">
+      <div class="flex justify-between items-center mb-4">
+        <h3 class="text-xl font-semibold">Take a Photo</h3>
+        <button id="close-camera" class="text-gray-400 hover:text-white">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="bg-black rounded-lg overflow-hidden mb-4">
+        <video id="camera-feed" class="w-full h-64 object-cover" autoplay></video>
+      </div>
+      <div class="flex justify-center gap-4">
+        <button id="switch-camera" class="secondary-btn p-3 rounded-full">
+          <i class="fas fa-sync-alt"></i>
+        </button>
+        <button id="take-photo" class="p-4 rounded-full bg-white">
+          <div class="w-12 h-12 rounded-full border-4 border-gray-800"></div>
+        </button>
+        <button id="camera-settings" class="secondary-btn p-3 rounded-full">
+          <i class="fas fa-sliders-h"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  <footer class="text-center text-sm text-gray-500 py-4 mt-10 border-t border-gray-700">
+    Created with ❤️ by 
+    <a href="https://www.instagram.com/amit_2005___/" target="_blank" class="text-indigo-400 hover:underline">
+      Amit Chaudhari
+    </a> 
+    – CodeAlpha Task 3
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
